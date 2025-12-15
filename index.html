@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Інтернет-магазин електроніки</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="res/images/favicon.ico">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="#home">
+                        <img src="res/images/logo.png" alt="TechStore Логотип" class="logo-img">
+                        <span class="logo-text">TechStore</span>
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Головна</a></li>
+                        <li><a href="#products" class="nav-link"><i class="fas fa-laptop"></i> Каталог</a></li>
+                        <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> Про нас</a></li>
+                        <li><a href="#contacts" class="nav-link"><i class="fas fa-phone"></i> Контакти</a></li>
+                        <li><a href="#cart" class="nav-link cart-link">
+                            <i class="fas fa-shopping-cart"></i> Кошик
+                            <span class="cart-count">0</span>
+                        </a></li>
+                    </ul>
+                    
+                    <button class="burger-menu" id="burgerMenu" aria-label="Відкрити меню">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Сучасна техніка для комфортного життя</h1>
+                    <p class="hero-subtitle">Великий вибір електроніки за доступними цінами</p>
+                    <a href="#products" class="btn btn-primary">Перейти до каталогу</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section" id="products">
+            <div class="container">
+                <h2 class="section-title">Популярні товари</h2>
+                <p class="section-subtitle">Обери найкращу техніку для себе</p>
+                
+                <!-- Фільтри -->
+                <div class="filters">
+                    <button class="filter-btn active" data-category="all">Всі товари</button>
+                    <button class="filter-btn" data-category="laptops">Ноутбуки</button>
+                    <button class="filter-btn" data-category="phones">Смартфони</button>
+                    <button class="filter-btn" data-category="tablets">Планшети</button>
+                    <button class="filter-btn" data-category="accessories">Аксесуари</button>
+                </div>
+                
+                <div class="products-grid" id="productsGrid">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Форма замовлення -->
+        <section class="order-section" id="order">
+            <div class="container">
+                <h2 class="section-title">Оформити замовлення</h2>
+                <div class="order-container">
+                    <div class="order-form-container">
+                        <form id="orderForm" class="order-form">
+                            <div class="form-group">
+                                <label for="name">Повне ім'я *</label>
+                                <input type="text" id="name" name="name" required>
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Електронна пошта *</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Номер телефону *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+380XXXXXXXXX" required>
+                                <span class="error-message" id="phoneError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address">Адреса доставки *</label>
+                                <textarea id="address" name="address" rows="3" required></textarea>
+                                <span class="error-message" id="addressError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="payment">Спосіб оплати</label>
+                                <select id="payment" name="payment">
+                                    <option value="cash">Готівка при отриманні</option>
+                                    <option value="card">Оплата карткою</option>
+                                    <option value="online">Онлайн оплата</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-submit">Замовити</button>
+                        </form>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h3>Ваше замовлення</h3>
+                        <div class="cart-items" id="cartItems">
+                        </div>
+                        <div class="order-total">
+                            <p>Всього товарів: <span id="totalItems">0</span></p>
+                            <p class="total-price">Загальна сума: <span id="totalPrice">0</span> грн</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="container">
+                <h2 class="section-title">Про наш магазин</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>TechStore - це сучасний інтернет-магазин електроніки, який пропонує широкий вибір якісної техніки від провідних виробників.</p>
+                        <p>Ми працюємо на ринку вже понад 5 років і за цей час заслужили довіру тисяч клієнтів.</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Гарантія якості на всі товари</li>
+                            <li><i class="fas fa-shipping-fast"></i> Швидка доставка по всій Україні</li>
+                            <li><i class="fas fa-headset"></i> Клієнтська підтримка 24/7</li>
+                            <li><i class="fas fa-shield-alt"></i> Безпечна оплата</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="res/images/pict1.webp" alt="Наш магазин">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer" id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TechStore</h4>
+                    <p>Інтернет-магазин сучасної електроніки та техніки.</p>
+                    <div class="social-links">
+                        <a href="https:/facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Контакти</h4>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Хрещатик, 1</li>
+                        <li><i class="fas fa-phone"></i> +380 (44) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@techstore.ua</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Графік роботи</h4>
+                    <ul class="schedule-list">
+                        <li>Пн-Пт: 9:00 - 20:00</li>
+                        <li>Сб: 10:00 - 18:00</li>
+                        <li>Нд: 10:00 - 16:00</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Корисні посилання</h4>
+                    <ul class="links-list">
+                        <li><a href="#home">Головна</a></li>
+                        <li><a href="#products">Каталог</a></li>
+                        <li><a href="#about">Про нас</a></li>
+                        <li><a href="#order">Оформити замовлення</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechStore. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Ваш кошик</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalCartItems">
+                    <!-- Товари в кошику будуть додані через JavaScript -->
+                </div>
+                <div class="modal-total">
+                    <p>Загальна сума: <span id="modalTotalPrice">0</span> грн</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="continueShopping">Продовжити покупки</button>
+                <button class="btn btn-primary" id="checkoutBtn">Оформити замовлення</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/validation.js"></script>
+</body>
+</html>
